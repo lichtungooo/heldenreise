@@ -250,19 +250,19 @@
       pointer-events: none;
     }
 
-    /* --- GOLDENES ZEITALTER --- */
-    #goldenes-zeitalter {
+    /* --- DAS FREIE SEIN --- */
+    #freies-sein {
       background: radial-gradient(ellipse at 50% 30%, #1a1520 0%, #0f0d18 50%, #0a0a0f 100%);
     }
 
-    #goldenes-zeitalter .section-title {
+    #freies-sein .section-title {
       background: linear-gradient(135deg, #ffd700, #fff8dc, #ffd700);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    #goldenes-zeitalter .glow-orb {
+    #freies-sein .glow-orb {
       position: absolute;
       width: 400px;
       height: 400px;
@@ -277,6 +277,47 @@
     @keyframes orbPulse {
       0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
       50% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+    }
+
+    /* --- DIE AUFLÖSUNG --- */
+    #aufloesung {
+      background: linear-gradient(180deg, #0a0a0f 0%, #1a1510 30%, #201a0a 50%, #1a1510 70%, #0a0a0f 100%);
+    }
+
+    #aufloesung .section-title {
+      background: linear-gradient(135deg, #f39c12, #ffd700, #f39c12);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #aufloesung .dissolve-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      border: 1px dashed rgba(243, 156, 18, 0.15);
+      animation: dissolve 6s ease-in-out infinite;
+    }
+
+    #aufloesung .dissolve-glow::after {
+      content: '';
+      position: absolute;
+      top: -5%;
+      left: -5%;
+      right: -5%;
+      bottom: -5%;
+      border-radius: 50%;
+      border: 1px dashed rgba(243, 156, 18, 0.08);
+      animation: dissolve 6s ease-in-out infinite reverse;
+    }
+
+    @keyframes dissolve {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; border-style: dashed; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.3; border-style: dotted; }
     }
 
     /* --- HELDENREISE (START) --- */
@@ -720,8 +761,11 @@
 
   <!-- Navigation dots -->
   <nav class="nav-dots" id="nav-dots">
-    <div class="nav-dot" data-target="goldenes-zeitalter" style="--dot-color: #ffd700">
-      <span class="tooltip">Goldenes Zeitalter</span>
+    <div class="nav-dot" data-target="freies-sein" style="--dot-color: #ffd700">
+      <span class="tooltip">Das freie Sein</span>
+    </div>
+    <div class="nav-dot" data-target="aufloesung" style="--dot-color: #f39c12">
+      <span class="tooltip">Die Auflösung ~2030</span>
     </div>
     <div class="nav-dot" data-target="heldenreise" style="--dot-color: #c9a84c">
       <span class="tooltip">Heldenreise</span>
@@ -763,22 +807,43 @@
 
   <!-- ==================== SECTIONS ==================== -->
 
-  <!-- GOLDENES ZEITALTER (Zukunft - oben) -->
-  <section class="section" id="goldenes-zeitalter">
+  <!-- DAS FREIE SEIN (ganz oben) -->
+  <section class="section" id="freies-sein">
     <div class="section-bg">
       <div class="glow-orb"></div>
     </div>
     <div class="section-content">
-      <div class="section-label">Zukunft</div>
-      <h2 class="section-title">Das Goldene Zeitalter</h2>
+      <div class="section-label">Jenseits der Zeit</div>
+      <h2 class="section-title">Das freie Sein</h2>
       <div class="divider" style="--accent: #ffd700"></div>
       <div class="section-text">
-        <p>Die Sph&auml;re l&ouml;st sich auf. Die Tore &ouml;ffnen sich. Die Verbindung zu allem, was ist, wird wiederhergestellt &mdash; zwischen Menschen, zwischen Planeten, zwischen Dimensionen.</p>
-        <p>Neue Technologien, die Tesla schon erahnte. Energie, die frei flie&szlig;t. Bewusstsein, das nicht mehr getaktet wird. Gemeinschaften, die sich selbst n&auml;hren. Zeit, die aufh&ouml;rt, ein Gef&auml;ngnis zu sein &mdash; und wieder zum ewigen Jetzt wird.</p>
-        <p>Die Menschheit bekämpft das System nicht. Sie h&ouml;rt einfach auf, sich daran zu beteiligen. Und in dieser Stille &mdash; in dieser Weigerung, die Illusion weiter zu n&auml;hren &mdash; zerbricht die Sph&auml;re.</p>
+        <p>Kein Zeitalter &mdash; denn das Wort enth&auml;lt &bdquo;Zeit&ldquo;. Was kommt, ist etwas, das keine Zeit mehr braucht.</p>
+        <p>Kosmische Zyklen, wie sie immer waren. Mond und Sonne. Planetenkonstellationen. Nat&uuml;rliche Rhythmen statt k&uuml;nstlicher Taktung. Was wir &bdquo;Gezeiten&ldquo; nennen, was wir &bdquo;Jahreszeiten&ldquo; nennen &mdash; das sind kosmische Kr&auml;fte, die in das Konzept &bdquo;Zeit&ldquo; hineingepresst wurden. Im freien Sein flie&szlig;en sie wieder frei.</p>
+        <p>Neue Technologien, die Tesla schon erahnte. Energie aus dem Bewusstsein selbst. Gemeinschaften, die sich selbst n&auml;hren. Tore, die sich wieder &ouml;ffnen. Die Verbindung zu allem, was ist &mdash; wiederhergestellt.</p>
         <div class="quote">
-          <p>Die Verbindung zu allem war nie weg &mdash; nur &uuml;berlagert. Und die &Uuml;berlagerung endet.</p>
+          <p>Es gibt kein Vorher und Nachher. Es gibt Zyklen, Rhythmen, Fluss. Der Mensch ist frei.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIE AUFLÖSUNG (~2030) -->
+  <section class="section" id="aufloesung">
+    <div class="section-bg">
+      <div class="dissolve-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">~2030</div>
+      <h2 class="section-title">Die Aufl&ouml;sung</h2>
+      <div class="divider" style="--accent: #f39c12"></div>
+      <div class="section-text">
+        <p>Die Sph&auml;re zerbricht. Nicht durch Kampf &mdash; durch Stille. Durch Millionen von Menschen, die einfach aufh&ouml;ren, die Illusion zu n&auml;hren.</p>
+        <p>Das Looking Glass zeigt nach Oktober 2030 nichts mehr. Nicht weil die Welt endet &mdash; weil das Instrument nur innerhalb der Sph&auml;re lesen kann. Ohne Sph&auml;re gibt es keine linearen Zeitlinien mehr. Nichts zu projizieren. Nichts zu kontrollieren.</p>
+        <p>Die Ankerpunkte, die vor Jahrtausenden gesetzt wurden &mdash; die Pyramiden, die Monumente, die leuchtenden Punkte &mdash; verlieren ihre Kraft. Die Verbindungslinie zwischen der Pflanzung der Zeit und diesem Moment schlie&szlig;t sich. Was begonnen wurde, endet hier.</p>
+        <div class="quote">
+          <p>Die Menschheit bek&auml;mpft das System nicht. Sie h&ouml;rt einfach auf, sich daran zu beteiligen. Und in dieser Stille zerbricht die Sph&auml;re.</p>
+        </div>
+        <p>Jede echte Begegnung zwischen Menschen erzeugt ein leuchtendes Feld. Jedes geheilte Trauma schw&auml;cht die Wand. Jede Quest, die du in deiner Heldenreise lebst, ist ein Riss in der Sph&auml;re.</p>
       </div>
     </div>
   </section>
@@ -800,7 +865,7 @@
         </div>
       </div>
       <div class="scroll-both">
-        <a href="#goldenes-zeitalter">
+        <a href="#aufloesung">
           <div class="scroll-arrow up"></div>
           Wo geht die Reise hin?
         </a>

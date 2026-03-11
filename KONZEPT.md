@@ -23,9 +23,12 @@ Die Heldenreise erzählt die Geschichte der Menschheit als **vertikale Zeitlinie
 ```
                     ↑ nach oben scrollen
         ┌───────────────────────────┐
-        │   GOLDENES ZEITALTER      │  Zukunft
-        │   Wohin die Reise geht    │  Allverbundenheit, Frieden,
-        │                           │  neue Technologien, Einheit
+        │   DAS FREIE SEIN          │  Jenseits der Zeit
+        │   Kosmische Zyklen        │  Verbunden, frei, entfesselt
+        ├───────────────────────────┤
+        │   DIE AUFLÖSUNG           │  ~2030
+        │   Das Ende der Zeit       │  Die Sphäre zerbricht,
+        │                           │  die Tore öffnen sich
         └───────────────────────────┘
                     ↑
      ══════════════════════════════════
@@ -125,6 +128,19 @@ Das Looking Glass zeigt zwei mögliche Ausgänge bis 2030:
 > *"Die Menschheit bekämpfte das System nicht — sie hörte einfach auf, sich daran zu beteiligen."*
 
 Das ist die Heldenreise. Nicht kämpfen. Leveln. Sich erinnern. In die Kraft kommen. Und die Sphäre — Riss für Riss — auflösen.
+
+### Die Auflösung (~2030) — Die Verbindungslinie
+
+Zwischen der "Pflanzung der Zeit" (unten in der Zeitlinie) und der "Auflösung" (oben, kurz über dem Hier und Jetzt) verläuft eine **Verbindungslinie** — wie ein Bogen, der sich schließt:
+
+- **Unten:** Die Zeit wurde gepflanzt. Ankerpunkte gesetzt. Die Sphäre errichtet. Das Zeitgefängnis begann.
+- **Oben:** Die Sphäre löst sich auf. Die Ankerpunkte verlieren ihre Kraft. Die Zeit endet.
+
+Das Looking Glass zeigt nach dem 10./11. Oktober 2030 nichts mehr — weil es nichts mehr zu zeigen gibt. Nicht weil die Welt endet, sondern weil die **Illusion** endet. Das Instrument kann nur innerhalb der Sphäre lesen. Ohne Sphäre — keine linearen Zeitlinien mehr.
+
+Was dann kommt, ist kein "Zeitalter" — denn das Wort enthält "Zeit". Es ist **das freie Sein**: Zurück zu kosmischen Zyklen, wie es in allen Hochkulturen war. Mond, Sonne, Planetenkonstellationen — natürliche Rhythmen statt künstlicher Taktung. Was wir "Gezeiten" nennen, was wir "Jahreszeiten" nennen — das sind kosmische Kräfte, keine Zeit. Sie wurden nur in das Konzept "Zeit" hineingepresst, um sie kontrollierbar zu machen.
+
+Im freien Sein gibt es kein Vorher und Nachher. Es gibt Zyklen, Rhythmen, Fluss. Der Mensch ist frei.
 
 ---
 
