@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heldenreise</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0a0a0f;
+      color: #e8e0d0;
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+    }
+
+    /* Stars background */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--duration) ease-in-out infinite;
+      opacity: 0;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: var(--max-opacity); }
+    }
+
+    /* Navigation dots */
+    .nav-dots {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .nav-dot:hover, .nav-dot.active {
+      background: var(--dot-color, #c9a84c);
+      border-color: var(--dot-color, #c9a84c);
+      box-shadow: 0 0 12px var(--dot-color, #c9a84c);
+    }
+
+    .nav-dot .tooltip {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.7);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .nav-dot:hover .tooltip {
+      opacity: 1;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      text-align: center;
+      opacity: 0.6;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+
+    .scroll-hint.hidden {
+      opacity: 0;
+    }
+
+    .scroll-hint span {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .scroll-arrow {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-right: 1px solid #e8e0d0;
+      border-bottom: 1px solid #e8e0d0;
+      transform: rotate(45deg);
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    .scroll-arrow.up {
+      transform: rotate(-135deg);
+      animation: scrollBounceUp 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0) rotate(45deg); }
+      50% { transform: translateY(8px) rotate(45deg); }
+    }
+
+    @keyframes scrollBounceUp {
+      0%, 100% { transform: translateY(0) rotate(-135deg); }
+      50% { transform: translateY(-8px) rotate(-135deg); }
+    }
+
+    /* Sections */
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-content {
+      max-width: 800px;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+
+    .section-text {
+      font-size: clamp(18px, 2.5vw, 22px);
+      line-height: 1.8;
+      font-weight: 300;
+      opacity: 0.85;
+    }
+
+    .section-text p {
+      margin-bottom: 20px;
+    }
+
+    .section-text em {
+      font-style: italic;
+      opacity: 0.7;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      margin: 32px 0;
+      position: relative;
+      overflow: visible;
+    }
+
+    .divider::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent, #c9a84c), transparent);
+    }
+
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 7px;
+      height: 7px;
+      background: var(--accent, #c9a84c);
+      border-radius: 50%;
+    }
+
+    /* Section-specific backgrounds */
+    .section-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* --- GOLDENES ZEITALTER --- */
+    #goldenes-zeitalter {
+      background: radial-gradient(ellipse at 50% 30%, #1a1520 0%, #0f0d18 50%, #0a0a0f 100%);
+    }
+
+    #goldenes-zeitalter .section-title {
+      background: linear-gradient(135deg, #ffd700, #fff8dc, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #goldenes-zeitalter .glow-orb {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: orbPulse 6s ease-in-out infinite;
+    }
+
+    @keyframes orbPulse {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+      50% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+    }
+
+    /* --- HELDENREISE (START) --- */
+    #heldenreise {
+      background: radial-gradient(ellipse at 50% 50%, #1a1a2e 0%, #0f0f1a 60%, #0a0a0f 100%);
+    }
+
+    #heldenreise .section-title {
+      font-size: clamp(36px, 7vw, 72px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #e8e0d0, #ffffff, #c9a84c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+    }
+
+    #heldenreise .section-label,
+    #heldenreise .section-text {
+      text-align: center;
+    }
+
+    #heldenreise .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: heroGlow 8s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.2); }
+    }
+
+    .scroll-both {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 48px;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .scroll-both a {
+      color: #e8e0d0;
+      text-decoration: none;
+      transition: opacity 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scroll-both a:hover {
+      opacity: 1;
+    }
+
+    /* --- DAS SYSTEM --- */
+    #system {
+      background: linear-gradient(180deg, #0a0a0f 0%, #12111a 30%, #1a1520 60%, #0a0a0f 100%);
+    }
+
+    #system .section-title {
+      color: #8a8a9a;
+    }
+
+    #system .chain-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 98vh,
+        rgba(100, 100, 120, 0.05) 98vh,
+        rgba(100, 100, 120, 0.05) 100vh
+      );
+    }
+
+    /* --- CHRISTIANISIERUNG --- */
+    #christianisierung {
+      background: linear-gradient(180deg, #0a0a0f 0%, #1a0f0f 40%, #0a0a0f 100%);
+    }
+
+    #christianisierung .section-title {
+      color: #a0523d;
+    }
+
+    #christianisierung .fire-glow {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: radial-gradient(ellipse at 50% 100%, rgba(160, 60, 30, 0.08) 0%, transparent 70%);
+    }
+
+    /* --- KELTEN & GERMANEN --- */
+    #kelten {
+      background: linear-gradient(180deg, #0a0a0f 0%, #0a120a 40%, #0a0a0f 100%);
+    }
+
+    #kelten .section-title {
+      color: #6a9a5a;
+    }
+
+    #kelten .forest-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 30% 60%, rgba(60, 120, 50, 0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 40%, rgba(60, 120, 50, 0.04) 0%, transparent 50%);
+    }
+
+    /* --- ALTEUROPA --- */
+    #alteuropa {
+      background: linear-gradient(180deg, #0a0a0f 0%, #0f0f12 40%, #0a0a0f 100%);
+    }
+
+    #alteuropa .section-title {
+      color: #9a8a7a;
+    }
+
+    #alteuropa .stone-glow {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(154, 138, 122, 0.06) 0%, transparent 70%);
+    }
+
+    /* --- VEDISCH --- */
+    #vedisch {
+      background: linear-gradient(180deg, #0a0a0f 0%, #1a140a 40%, #0a0a0f 100%);
+    }
+
+    #vedisch .section-title {
+      background: linear-gradient(135deg, #e8a020, #ffd060, #e8a020);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #vedisch .sacred-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 160, 32, 0.05) 0%, transparent 60%);
+      animation: sacredPulse 10s ease-in-out infinite;
+    }
+
+    @keyframes sacredPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+    }
+
+    /* --- ALTE HOCHKULTUREN --- */
+    #hochkulturen {
+      background: linear-gradient(180deg, #0a0a0f 0%, #0f0a14 40%, #0a0a0f 100%);
+    }
+
+    #hochkulturen .section-title {
+      color: #9a7ab0;
+    }
+
+    #hochkulturen .mystery-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 20% 30%, rgba(120, 80, 160, 0.04) 0%, transparent 40%),
+                  radial-gradient(ellipse at 80% 70%, rgba(120, 80, 160, 0.04) 0%, transparent 40%);
+    }
+
+    /* --- KOSMISCHE VERBINDUNG --- */
+    #kosmisch {
+      background: radial-gradient(ellipse at 50% 50%, #0f0a1a 0%, #0a0a0f 60%);
+      min-height: 120vh;
+    }
+
+    #kosmisch .section-title {
+      background: linear-gradient(135deg, #6a8aff, #c080ff, #6a8aff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #kosmisch .cosmos-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(80, 100, 200, 0.06) 0%, transparent 40%),
+                  radial-gradient(ellipse at 70% 80%, rgba(160, 100, 200, 0.04) 0%, transparent 40%),
+                  radial-gradient(ellipse at 50% 50%, rgba(100, 80, 180, 0.03) 0%, transparent 60%);
+    }
+
+    /* --- ZURÜCK (CTA) --- */
+    #zurueck {
+      min-height: 60vh;
+      background: radial-gradient(ellipse at 50% 30%, #1a1a2e 0%, #0a0a0f 60%);
+    }
+
+    #zurueck .section-title {
+      text-align: center;
+      font-size: clamp(24px, 4vw, 40px);
+    }
+
+    #zurueck .section-text {
+      text-align: center;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 16px 48px;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #e8e0d0;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      background: rgba(201, 168, 76, 0.08);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.4s ease;
+    }
+
+    .cta-button:hover {
+      background: rgba(201, 168, 76, 0.2);
+      border-color: rgba(201, 168, 76, 0.8);
+      box-shadow: 0 0 30px rgba(201, 168, 76, 0.15);
+    }
+
+    /* Timeline line */
+    .timeline-line {
+      position: fixed;
+      left: 40px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg,
+        rgba(255, 215, 0, 0.3) 0%,
+        rgba(201, 168, 76, 0.4) 15%,
+        rgba(201, 168, 76, 0.2) 25%,
+        rgba(138, 138, 154, 0.2) 35%,
+        rgba(160, 82, 61, 0.3) 45%,
+        rgba(106, 154, 90, 0.3) 55%,
+        rgba(154, 138, 122, 0.2) 65%,
+        rgba(232, 160, 32, 0.3) 75%,
+        rgba(154, 122, 176, 0.3) 85%,
+        rgba(106, 138, 255, 0.3) 100%
+      );
+      z-index: 50;
+    }
+
+    .timeline-progress {
+      position: fixed;
+      left: 40px;
+      top: 0;
+      width: 1px;
+      height: 0%;
+      background: linear-gradient(180deg, rgba(201, 168, 76, 0.8), rgba(201, 168, 76, 0.4));
+      z-index: 51;
+      transition: height 0.1s linear;
+    }
+
+    .timeline-dot {
+      position: fixed;
+      left: 36px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.5);
+      background: #0a0a0f;
+      z-index: 52;
+      transition: all 0.4s ease;
+    }
+
+    .timeline-dot.active {
+      background: var(--dot-color, #c9a84c);
+      border-color: var(--dot-color, #c9a84c);
+      box-shadow: 0 0 12px var(--dot-color, #c9a84c);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section {
+        padding: 60px 24px;
+      }
+
+      .nav-dots {
+        right: 12px;
+      }
+
+      .timeline-line,
+      .timeline-progress {
+        left: 16px;
+      }
+
+      .timeline-dot {
+        left: 12px;
+      }
+
+      .nav-dot .tooltip {
+        display: none;
+      }
+
+      .scroll-both {
+        gap: 40px;
+      }
+    }
+
+    /* Subtle particle effect for kosmisch */
+    .particle {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: rgba(160, 140, 255, 0.6);
+      border-radius: 50%;
+      animation: float var(--float-duration) ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0;
+      }
+      25% {
+        opacity: 0.8;
+      }
+      50% {
+        transform: translate(var(--float-x), var(--float-y));
+        opacity: 0.4;
+      }
+      75% {
+        opacity: 0.6;
+      }
+    }
+
+    /* Quote styling */
+    .quote {
+      border-left: 2px solid rgba(201, 168, 76, 0.3);
+      padding-left: 24px;
+      margin: 24px 0;
+      font-style: italic;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Timeline line -->
+  <div class="timeline-line"></div>
+  <div class="timeline-progress" id="timeline-progress"></div>
+
+  <!-- Navigation dots -->
+  <nav class="nav-dots" id="nav-dots">
+    <div class="nav-dot" data-target="goldenes-zeitalter" style="--dot-color: #ffd700">
+      <span class="tooltip">Goldenes Zeitalter</span>
+    </div>
+    <div class="nav-dot" data-target="heldenreise" style="--dot-color: #c9a84c">
+      <span class="tooltip">Heldenreise</span>
+    </div>
+    <div class="nav-dot" data-target="system" style="--dot-color: #8a8a9a">
+      <span class="tooltip">Das System</span>
+    </div>
+    <div class="nav-dot" data-target="christianisierung" style="--dot-color: #a0523d">
+      <span class="tooltip">Christianisierung</span>
+    </div>
+    <div class="nav-dot" data-target="kelten" style="--dot-color: #6a9a5a">
+      <span class="tooltip">Kelten & Germanen</span>
+    </div>
+    <div class="nav-dot" data-target="alteuropa" style="--dot-color: #9a8a7a">
+      <span class="tooltip">Alteuropa</span>
+    </div>
+    <div class="nav-dot" data-target="vedisch" style="--dot-color: #e8a020">
+      <span class="tooltip">Vedische Kultur</span>
+    </div>
+    <div class="nav-dot" data-target="hochkulturen" style="--dot-color: #9a7ab0">
+      <span class="tooltip">Alte Hochkulturen</span>
+    </div>
+    <div class="nav-dot" data-target="kosmisch" style="--dot-color: #6a8aff">
+      <span class="tooltip">Kosmische Verbindung</span>
+    </div>
+  </nav>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint" id="scroll-hint">
+    <span>Entdecke</span>
+    <div class="scroll-arrow"></div>
+  </div>
+
+  <!-- ==================== SECTIONS ==================== -->
+
+  <!-- GOLDENES ZEITALTER (Zukunft - oben) -->
+  <section class="section" id="goldenes-zeitalter">
+    <div class="section-bg">
+      <div class="glow-orb"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">Zukunft</div>
+      <h2 class="section-title">Das Goldene Zeitalter</h2>
+      <div class="divider" style="--accent: #ffd700"></div>
+      <div class="section-text">
+        <p>Stell dir eine Welt vor, in der Mensch, Erde und Kosmos wieder im Einklang schwingen. Technologie, die aus Bewusstsein entsteht, nicht aus Ausbeutung. Gemeinschaften, die sich selbst nähren. Verbindung zu allem, was ist.</p>
+        <p>Neue Technologien, die Tesla schon erahnte. Energie, die frei fließt. Wissen, das geteilt wird. Grenzen, die sich auflösen &mdash; zwischen Nationen, zwischen Dimensionen, zwischen uns.</p>
+        <div class="quote">
+          <p>Die Verbindung zu allem war nie weg &mdash; nur vergessen.</p>
+        </div>
+        <p>Das ist kein Traum. Das ist Erinnerung. An das, was wir einmal waren &mdash; und wieder werden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HELDENREISE (Startpunkt) -->
+  <section class="section" id="heldenreise">
+    <div class="section-bg">
+      <div class="hero-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">Hier und Jetzt</div>
+      <h2 class="section-title">Heldenreise</h2>
+      <div class="divider" style="--accent: #c9a84c; margin: 32px auto;"></div>
+      <div class="section-text">
+        <p>Deine Reise beginnt genau hier. Genau jetzt. Du bist der Held deiner eigenen Geschichte.</p>
+        <p>Nicht in einer Fantasiewelt &mdash; in deinem echten Leben. Mit echten Menschen. An echten Orten. Jeder Schritt, den du gehst, jede Erkenntnis, die du gewinnst, jede Verbindung, die du knüpfst &mdash; ist Teil deiner Heldenreise.</p>
+        <div class="quote">
+          <p>Es gibt kein Spiel, das größer ist als das Leben selbst.</p>
+        </div>
+      </div>
+      <div class="scroll-both">
+        <a href="#goldenes-zeitalter">
+          <div class="scroll-arrow up"></div>
+          Wo geht die Reise hin?
+        </a>
+        <a href="#system">
+          <div class="scroll-arrow"></div>
+          Wo kommen wir her?
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAS SYSTEM -->
+  <section class="section" id="system">
+    <div class="section-bg">
+      <div class="chain-pattern"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">Die letzten 200 Jahre</div>
+      <h2 class="section-title">Das System</h2>
+      <div class="divider" style="--accent: #8a8a9a"></div>
+      <div class="section-text">
+        <p>Industrialisierung. Materialismus. Der Mensch als Maschine, die Erde als Ressource. Alles messbar, nichts mehr fühlbar.</p>
+        <p>Ein System, das uns Fortschritt versprach und uns dafür die Verbindung nahm. Zu unserer Erde, zu unseren Mitmenschen, zu uns selbst. Gemachte Wissenschaft, die vorgibt, alles erklären zu können &mdash; und doch die wichtigsten Fragen nicht stellt.</p>
+        <p>Die alte Welt zerfällt. Nicht weil jemand sie zerstört. Sondern weil immer mehr Menschen aufwachen und sich erinnern.</p>
+        <div class="quote">
+          <p>Du musst das System nicht bekämpfen. Du musst nur aufhören, es zu nähren.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHRISTIANISIERUNG -->
+  <section class="section" id="christianisierung">
+    <div class="section-bg">
+      <div class="fire-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">400 &ndash; 1700 n. Chr.</div>
+      <h2 class="section-title">Die große Trennung</h2>
+      <div class="divider" style="--accent: #a0523d"></div>
+      <div class="section-text">
+        <p>Hier liegt der Kern des Verlustes. Über tausend Jahre systematischer Zerstörung unserer Wurzeln.</p>
+        <p>Heilige Haine wurden gefällt. Quellen zu Kirchenstandorten umgewidmet. Feste umbenannt &mdash; Ostara wurde zu Ostern, Jul zu Weihnachten. Das Wissen der Kräuterkundigen, der Heilerinnen, der Seherinnen &mdash; verbrannt auf Scheiterhaufen.</p>
+        <p>Karl der Große ließ 782 bei Verden an der Aller Tausende Sachsen hinrichten, weil sie sich nicht taufen lassen wollten. Die Inquisition vernichtete die letzten Reste des alten Wissens.</p>
+        <div class="quote">
+          <p>Was sie verbrannten, waren nicht nur Menschen. Es war unser Gedächtnis.</p>
+        </div>
+        <p>Und doch &mdash; die Erinnerung ist nicht tot. Sie schläft. In den Ortsnamen, in den Bräuchen, die niemand mehr versteht, in der Sehnsucht, die uns zu Kraftorten zieht.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KELTEN & GERMANEN -->
+  <section class="section" id="kelten">
+    <div class="section-bg">
+      <div class="forest-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">ca. 3000 v. Chr. &ndash; 400 n. Chr.</div>
+      <h2 class="section-title">Kelten, Germanen &amp; Slawen</h2>
+      <div class="divider" style="--accent: #6a9a5a"></div>
+      <div class="section-text">
+        <p>Gemeinschaften, die im Rhythmus der Erde lebten. Die Druiden trugen Wissen, das nicht in Büchern stand, sondern in Bäumen, Sternen und der Stille zwischen den Worten.</p>
+        <p>Jahreskreisfeste markierten den Herzschlag der Natur. Die Verbindung zur geistigen Welt war keine Religion &mdash; sie war Alltag. Heiler, Seher, Weise waren Teil jeder Gemeinschaft.</p>
+        <p>Runen waren keine Schrift. Sie waren Schlüssel &mdash; zu Kräften, die wir heute kaum noch erahnen. Heilige Orte waren Tore &mdash; nicht zu anderen Orten, sondern zu anderen Ebenen des Seins.</p>
+        <div class="quote">
+          <p>Sie wussten, was wir vergessen haben: Alles ist lebendig. Alles ist verbunden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALTEUROPA -->
+  <section class="section" id="alteuropa">
+    <div class="section-bg">
+      <div class="stone-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">ca. 7000 &ndash; 3000 v. Chr.</div>
+      <h2 class="section-title">Alteuropa</h2>
+      <div class="divider" style="--accent: #9a8a7a"></div>
+      <div class="section-text">
+        <p>Vor den Kelten, vor den Germanen &mdash; eine noch ältere Schicht. Matriarchale Kulturen, die keine Kriege führten. Gemeinschaften, die das Weibliche ehrten und die Erde als Mutter verstanden.</p>
+        <p>Megalith-Bauten, die mit einer Präzision errichtet wurden, die wir bis heute nicht erklären können. Stonehenge, Goseck, die Himmelsscheibe von Nebra &mdash; Zeugnisse eines Wissens, das in Stein geschrieben wurde, weil es zu wichtig war, um vergessen zu werden.</p>
+        <div class="quote">
+          <p>Sie bauten nicht für sich. Sie bauten für uns &mdash; damit wir uns erinnern.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VEDISCH -->
+  <section class="section" id="vedisch">
+    <div class="section-bg">
+      <div class="sacred-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">30.000 &ndash; 40.000 Jahre</div>
+      <h2 class="section-title">Die Vedische Kultur</h2>
+      <div class="divider" style="--accent: #e8a020"></div>
+      <div class="section-text">
+        <p>Das älteste lebendige Wissenssystem der Menschheit. Eine Kultur, die weit vor allem existierte, was wir heute Geschichte nennen &mdash; und die ohne kriegerische Aspekte lebte.</p>
+        <p>Die Veden beschreiben eine Welt, in der Bewusstsein der Grundstoff von allem ist. Nicht Materie. Nicht Energie. Bewusstsein. Alles schwingt, alles ist Frequenz, alles ist verbunden.</p>
+        <p>Nikola Tesla studierte die Veden &mdash; und fand darin Prinzipien, die ihn zur Nullpunktenergie, zur freien Energie führten. Viktor Schauberger las die Natur wie die Veden es lehren &mdash; und verstand, was Wasser wirklich ist. Wilhelm Reich entdeckte die Orgon-Energie &mdash; die Lebenskraft, die alles durchdringt.</p>
+        <div class="quote">
+          <p>Die Kelten, die Germanen, die Inder &mdash; Äste desselben Baumes. Genährt von derselben Wurzel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALTE HOCHKULTUREN -->
+  <section class="section" id="hochkulturen">
+    <div class="section-bg">
+      <div class="mystery-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">90.000 &ndash; 120.000+ Jahre</div>
+      <h2 class="section-title">Alte Hochkulturen</h2>
+      <div class="divider" style="--accent: #9a7ab0"></div>
+      <div class="section-text">
+        <p>Es gab Hochkulturen auf dieser Erde, von denen wir fast nichts wissen. Zivilisationen, die in Zyklen kamen und gingen &mdash; lange bevor das begann, was wir &bdquo;Geschichte&ldquo; nennen.</p>
+        <p>Überlieferungen aus allen Teilen der Welt berichten von Riesen, von Wesen, die den Himmel berührten. Von Zeiten, in denen die Verbindung zwischen Himmel und Erde noch offen war.</p>
+        <p>Mutter Erde ist Milliarden Jahre alt. Was wir kennen, ist ein winziges Fenster. Und hinter diesem Fenster liegt &mdash; Staunen.</p>
+        <div class="quote">
+          <p>Es gab mehr, als man uns erzählt. Viel mehr.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOSMISCHE VERBINDUNG -->
+  <section class="section" id="kosmisch">
+    <div class="section-bg">
+      <div class="cosmos-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">Zeitlos</div>
+      <h2 class="section-title">Die kosmische Verbindung</h2>
+      <div class="divider" style="--accent: #6a8aff"></div>
+      <div class="section-text">
+        <p>Die Erde ist kein isolierter Fels im All. Sie war immer Teil von etwas Größerem &mdash; eines Netzwerks, das sich über Dimensionen erstreckt.</p>
+        <p>Verbindungen zwischen Planeten. Tore zwischen den Welten. Ein kollektives Bewusstsein, das nicht an der Atmosphäre endet, sondern das gesamte Universum durchdringt.</p>
+        <p>Was, wenn diese Verbindungen nie gekappt wurden? Was, wenn sie nur vergessen wurden &mdash; und darauf warten, dass wir uns erinnern?</p>
+        <div class="quote">
+          <p>Das Alleins. Die Verbindung von allem, was ist, was war, was sein wird. Nicht irgendwo da draußen &mdash; in dir.</p>
+        </div>
+        <p>Und hier schließt sich der Kreis. Die kosmische Verbindung und das Goldene Zeitalter sind dasselbe &mdash; nur von verschiedenen Seiten betrachtet. Die Reise nach innen ist die Reise nach außen. Die Reise in die Vergangenheit ist die Reise in die Zukunft.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZURÜCK ZUM START -->
+  <section class="section" id="zurueck">
+    <div class="section-content">
+      <h2 class="section-title" style="background: linear-gradient(135deg, #e8e0d0, #c9a84c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Deine Reise beginnt jetzt.</h2>
+      <div class="divider" style="--accent: #c9a84c; margin: 32px auto;"></div>
+      <div class="section-text">
+        <p>Du hast gesehen, wo wir herkommen. Du hast gesehen, wo wir hingehen. Jetzt ist die Frage: Was ist dein nächster Schritt?</p>
+        <p>Jeder Held beginnt mit einem ersten Schritt. Nicht perfekt. Nicht mutig. Einfach echt.</p>
+      </div>
+      <div style="text-align: center; margin-top: 32px;">
+        <a class="cta-button" href="#heldenreise">Beginne deine Heldenreise</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Generate stars
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 200; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.setProperty('--duration', (3 + Math.random() * 7) + 's');
+      star.style.setProperty('--max-opacity', (0.3 + Math.random() * 0.7).toString());
+      star.style.animationDelay = Math.random() * 5 + 's';
+      if (Math.random() > 0.8) {
+        star.style.width = '3px';
+        star.style.height = '3px';
+      }
+      starsContainer.appendChild(star);
+    }
+
+    // Generate particles for kosmisch section
+    const kosmischBg = document.querySelector('#kosmisch .section-bg');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.setProperty('--float-duration', (8 + Math.random() * 12) + 's');
+      particle.style.setProperty('--float-x', (Math.random() * 100 - 50) + 'px');
+      particle.style.setProperty('--float-y', (Math.random() * 100 - 50) + 'px');
+      particle.style.animationDelay = Math.random() * 8 + 's';
+      kosmischBg.appendChild(particle);
+    }
+
+    // Intersection Observer for fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.section-content').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Active section tracking
+    const sections = document.querySelectorAll('.section[id]');
+    const navDots = document.querySelectorAll('.nav-dot');
+    const scrollHint = document.getElementById('scroll-hint');
+    const timelineProgress = document.getElementById('timeline-progress');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navDots.forEach(dot => {
+            dot.classList.toggle('active', dot.dataset.target === id);
+          });
+        }
+      });
+    }, {
+      threshold: 0.4
+    });
+
+    sections.forEach(section => {
+      if (section.id !== 'zurueck') {
+        sectionObserver.observe(section);
+      }
+    });
+
+    // Nav dot click
+    navDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const target = document.getElementById(dot.dataset.target);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Scroll progress & hint
+    let scrolled = false;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      timelineProgress.style.height = progress + '%';
+
+      if (!scrolled && scrollTop > 100) {
+        scrolled = true;
+        scrollHint.classList.add('hidden');
+      }
+    });
+
+    // Scroll to heldenreise on load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('heldenreise').scrollIntoView({ behavior: 'auto' });
+        // Trigger visibility for heldenreise section
+        document.querySelector('#heldenreise .section-content').classList.add('visible');
+      }, 100);
+    });
+  </script>
+
+</body>
+</html>
