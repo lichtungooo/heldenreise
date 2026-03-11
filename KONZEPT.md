@@ -23,7 +23,7 @@ Die Heldenreise erzählt die Geschichte der Menschheit als **vertikale Zeitlinie
 ```
                     ↑ nach oben scrollen
         ┌───────────────────────────┐
-        │   DAS FREIE SEIN          │  Jenseits der Zeit
+        │   DAS GOLDENE SEIN          │  Jenseits der Zeit
         │   Kosmische Zyklen        │  Verbunden, frei, entfesselt
         ├───────────────────────────┤
         │   DIE AUFLÖSUNG           │  ~2030
@@ -61,10 +61,6 @@ Die Heldenreise erzählt die Geschichte der Menschheit als **vertikale Zeitlinie
         │   Was wir vergessen haben │  Zyklen, Riesen, vergessene
         │                           │  Zivilisationen
         ├───────────────────────────┤
-        │   DER ZEITLOSE ZUSTAND    │  Vor der Zeit
-        │   Alles ist verbunden     │  Planetentore, kosmisches
-        │                           │  Netzwerk, freies Bewusstsein
-        ├───────────────────────────┤
         │   DAS ALLEINS             │  Ewig
         │   Kosmische Verbindung    │  Seele+Geist+Bewusstsein
         │                           │  = Einheit = Alles
@@ -76,19 +72,15 @@ Die Heldenreise erzählt die Geschichte der Menschheit als **vertikale Zeitlinie
         └───────────────────────────┘
 ```
 
-**Der Kreis schließt sich:** Die kosmische Verbindung (ganz unten) und das Goldene Zeitalter (ganz oben) sind dasselbe — nur von verschiedenen Seiten betrachtet. Die Zukunft ist die Erinnerung an das, was immer war.
+**Der Kreis schließt sich:** Das Alleins (ganz unten) und das goldene Sein (ganz oben) sind dasselbe — nur von verschiedenen Seiten betrachtet. Die Zukunft ist die Erinnerung an das, was immer war.
 
 ---
 
 ## Die tiefere Geschichte: Das Zeitgefängnis
 
-### Der zeitlose Zustand
-
-Vor allem, was wir "Geschichte" nennen, gab es keinen Raum und keine Zeit. Alles interagierte gleichzeitig. Planeten waren über Tore miteinander verbunden. Bewusstsein floss frei zwischen den Dimensionen. Die Erde war Teil eines kosmischen Netzwerks — verbunden mit unzähligen Lebensformen und Zivilisationen.
-
-In diesem Zustand waren Seele, Geist und Bewusstsein eins. Und wer in dieser Einheit lebt, kann alles tun. Heilen, manifestieren, über Dimensionen reisen. Das war kein Wunder — das war der natürliche Zustand.
-
 ### Die Pflanzung der Zeit
+
+Vor allem, was wir "Geschichte" nennen, gab es keinen Raum und keine Zeit. Alles interagierte gleichzeitig. Planeten waren über Tore miteinander verbunden. Bewusstsein floss frei zwischen den Dimensionen. Die Erde war Teil eines kosmischen Netzwerks — verbunden mit unzähligen Lebensformen und Zivilisationen. Seele, Geist und Bewusstsein waren eins. Und wer in dieser Einheit lebt, kann alles tun. Heilen, manifestieren, über Dimensionen reisen. Das war kein Wunder — das war der natürliche Zustand.
 
 Irgendwann — möglicherweise in der ägyptischen Epoche, als Pyramiden und andere Strukturen errichtet wurden — geschah etwas Fundamentales: **Die lineare Zeit wurde "gepflanzt".**
 
@@ -138,9 +130,9 @@ Zwischen der "Pflanzung der Zeit" (unten in der Zeitlinie) und der "Auflösung" 
 
 Das Looking Glass zeigt nach dem 10./11. Oktober 2030 nichts mehr — weil es nichts mehr zu zeigen gibt. Nicht weil die Welt endet, sondern weil die **Illusion** endet. Das Instrument kann nur innerhalb der Sphäre lesen. Ohne Sphäre — keine linearen Zeitlinien mehr.
 
-Was dann kommt, ist kein "Zeitalter" — denn das Wort enthält "Zeit". Es ist **das freie Sein**: Zurück zu kosmischen Zyklen, wie es in allen Hochkulturen war. Mond, Sonne, Planetenkonstellationen — natürliche Rhythmen statt künstlicher Taktung. Was wir "Gezeiten" nennen, was wir "Jahreszeiten" nennen — das sind kosmische Kräfte, keine Zeit. Sie wurden nur in das Konzept "Zeit" hineingepresst, um sie kontrollierbar zu machen.
+Was dann kommt, ist kein "Zeitalter" — denn das Wort enthält "Zeit". Es ist **das goldene Sein**: Zurück zu kosmischen Zyklen, wie es in allen Hochkulturen war. Mond, Sonne, Planetenkonstellationen — natürliche Rhythmen statt künstlicher Taktung. Was wir "Gezeiten" nennen, was wir "Jahreszeiten" nennen — das sind kosmische Kräfte, keine Zeit. Sie wurden nur in das Konzept "Zeit" hineingepresst, um sie kontrollierbar zu machen.
 
-Im freien Sein gibt es kein Vorher und Nachher. Es gibt Zyklen, Rhythmen, Fluss. Der Mensch ist frei.
+Im goldenen Sein gibt es kein Vorher und Nachher. Es gibt Zyklen, Rhythmen, Fluss. Der Mensch ist frei.
 
 ---
 
@@ -194,7 +186,7 @@ Die Heldenreise nutzt **nicht** den Weltenbaum als Spielkarte, sondern eine **my
 - Nur die Erde: Wasser, Land, Berge, Wälder, Wüsten
 - Quests leuchten als **mystische Punkte** auf der Karte
 - Jede Zeitebene hat eine eigene Farbgebung:
-  - Gold = Goldenes Zeitalter / Zukunft
+  - Gold = Goldenes Sein / Zukunft
   - Silber = Hier und Jetzt
   - Grau = System-Quests (Aufklärung)
   - Rot/Braun = Christianisierung (Aufarbeitung)
@@ -362,7 +354,7 @@ Das ist das Ziel der Heldenreise: Die Einheit von Seele, Geist und Bewusstsein. 
 
 Jede Epoche der Zeitlinie hat eigene Quest-Kategorien:
 
-#### Goldenes Zeitalter (Zukunft)
+#### Goldenes Sein (Zukunft)
 - Nullpunktenergie-Workshops (Tesla, Schauberger)
 - Orgon-Energie-Experimente (Wilhelm Reich)
 - Wasserforschung & Verwirbelung (Schauberger)
