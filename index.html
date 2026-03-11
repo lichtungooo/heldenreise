@@ -686,7 +686,7 @@
     #hochkulturen::before { background: linear-gradient(180deg, rgba(26, 10, 10, 0.4) 0%, rgba(15, 10, 20, 0.6) 100%); }
     #kosmisch::before { background: linear-gradient(180deg, rgba(15, 10, 20, 0.4) 0%, rgba(15, 10, 26, 0.6) 100%); }
 
-    /* Energy flow lines alongside content */
+    /* Energy flow stripes alongside content */
     .energy-flow {
       position: absolute;
       left: 0;
@@ -698,31 +698,26 @@
       overflow: hidden;
     }
 
-    .energy-flow::before,
-    .energy-flow::after {
-      content: '';
+    .energy-flow .stripe {
       position: absolute;
-      top: 0;
-      height: 100%;
-      width: 2px;
-      opacity: 0.12;
+      top: -20%;
+      height: 140%;
+      width: 1px;
+      opacity: 0;
+      animation: stripeFlow var(--stripe-speed, 8s) ease-in-out infinite var(--stripe-delay, 0s);
+      background: linear-gradient(180deg,
+        var(--flow-color-prev, transparent) 0%,
+        var(--flow-color, rgba(201, 168, 76, 0.5)) 20%,
+        var(--flow-color, rgba(201, 168, 76, 0.5)) 80%,
+        var(--flow-color-next, transparent) 100%
+      );
     }
 
-    .energy-flow::before {
-      left: 12%;
-      background: linear-gradient(180deg, transparent 0%, var(--flow-color, rgba(201, 168, 76, 0.6)) 30%, var(--flow-color, rgba(201, 168, 76, 0.6)) 70%, transparent 100%);
-      animation: energyPulse 6s ease-in-out infinite;
-    }
-
-    .energy-flow::after {
-      right: 12%;
-      background: linear-gradient(180deg, transparent 10%, var(--flow-color, rgba(201, 168, 76, 0.4)) 40%, var(--flow-color, rgba(201, 168, 76, 0.4)) 60%, transparent 90%);
-      animation: energyPulse 6s ease-in-out infinite 3s;
-    }
-
-    @keyframes energyPulse {
-      0%, 100% { opacity: 0.05; }
-      50% { opacity: 0.15; }
+    @keyframes stripeFlow {
+      0%, 100% { opacity: 0; transform: translateY(5px); }
+      15% { opacity: 0.25; }
+      50% { opacity: 0.12; transform: translateY(-5px); }
+      85% { opacity: 0.2; }
     }
 
     /* Responsive */
@@ -849,17 +844,16 @@
     <div class="section-bg">
       <div class="glow-orb"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(255, 215, 0, 0.5)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
-      <div class="section-label">Jenseits der Zeit</div>
+      <div class="section-label">Das Ziel der Reise</div>
       <h2 class="section-title">Das goldene Sein</h2>
       <div class="divider" style="--accent: #ffd700"></div>
       <div class="section-text">
-        <p>Kein Zeitalter &mdash; denn das Wort enth&auml;lt &bdquo;Zeit&ldquo;. Was kommt, ist etwas, das keine Zeit mehr braucht.</p>
-        <p>Kosmische Zyklen, wie sie immer waren. Mond und Sonne. Planetenkonstellationen. Nat&uuml;rliche Rhythmen statt k&uuml;nstlicher Taktung. Was wir &bdquo;Gezeiten&ldquo; nennen, was wir &bdquo;Jahreszeiten&ldquo; nennen &mdash; das sind kosmische Kr&auml;fte, die in das Konzept &bdquo;Zeit&ldquo; hineingepresst wurden. Im goldenen Sein flie&szlig;en sie wieder frei.</p>
-        <p>Seele, Geist und Bewusstsein sind wieder eins. Planeten &uuml;ber Tore verbunden. Bewusstsein flie&szlig;t frei zwischen den Dimensionen. Neue Technologien, die Tesla schon erahnte. Energie aus dem Bewusstsein selbst. Gemeinschaften, die sich selbst n&auml;hren. Die Verbindung zu allem, was ist &mdash; wiederhergestellt.</p>
+        <p>Kosmische Zyklen, wie sie immer waren. Mond und Sonne. Planetenkonstellationen. Nat&uuml;rliche Rhythmen. Alles flie&szlig;t wieder frei.</p>
+        <p>Seele, Geist und Bewusstsein sind wieder eins. Das Bewusstsein ist zur&uuml;ck in den Herzen der Menschen. Die Tore zwischen den Welten stehen offen. Gemeinschaften, die sich selbst n&auml;hren. Neue Technologien, die Tesla schon erahnte. Die Verbindung zu allem, was ist &mdash; wiederhergestellt.</p>
         <div class="quote">
-          <p>Es gibt kein Vorher und Nachher. Es gibt Zyklen, Rhythmen, Fluss. Der Mensch ist frei.</p>
+          <p>Es gibt Zyklen, Rhythmen, Fluss. Der Mensch ist frei.</p>
         </div>
       </div>
     </div>
@@ -870,18 +864,17 @@
     <div class="section-bg">
       <div class="dissolve-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(243, 156, 18, 0.5)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
-      <div class="section-label">~2030</div>
+      <div class="section-label">Richtung 2030</div>
       <h2 class="section-title">Die Aufl&ouml;sung</h2>
       <div class="divider" style="--accent: #f39c12"></div>
       <div class="section-text">
-        <p>Du bist nicht hier, um zuzuschauen. Du bist hier, um mitzuwirken. Jetzt &mdash; vor 2030 &mdash; ist die Zeit der Helden.</p>
-        <p>Die Sph&auml;re zerbricht. Nicht durch Kampf &mdash; durch Stille. Durch Millionen von Menschen, die einfach aufh&ouml;ren, die Illusion zu n&auml;hren. Und du bist einer von ihnen.</p>
-        <p>Das Looking Glass zeigt nach Oktober 2030 nichts mehr. Nicht weil die Welt endet &mdash; weil das Instrument nur innerhalb der Sph&auml;re lesen kann. Ohne Sph&auml;re gibt es keine linearen Zeitlinien mehr. Nichts zu projizieren. Nichts zu kontrollieren.</p>
-        <p>Die Ankerpunkte, die vor Jahrtausenden gesetzt wurden &mdash; die Pyramiden, die Monumente, die leuchtenden Punkte &mdash; verlieren ihre Kraft. Die Verbindungslinie zwischen der Pflanzung der Zeit und diesem Moment schlie&szlig;t sich.</p>
+        <p>Du bist nicht hier, um zuzuschauen. Du bist hier, um mitzuwirken. Hier levelst du dich &mdash; erh&ouml;hst dein Bewusstsein, Schritt f&uuml;r Schritt, Quest f&uuml;r Quest.</p>
+        <p>Weltumspannende Quests bringen Menschen zusammen. Jede echte Begegnung erzeugt ein leuchtendes Feld. Tausende solcher Felder, geb&uuml;ndelt durch die Energie vieler Menschen, wirken auf die Sph&auml;re &mdash; und von kosmischer Seite geschieht dasselbe.</p>
+        <p>Die Sph&auml;re l&ouml;st sich auf. Nicht durch Kampf &mdash; durch Bewusstsein. Das Feld, das uns so lange umgeben hat, wird d&uuml;nner. Und das Bewusstsein kehrt zur&uuml;ck in die Herzen der Menschen.</p>
         <div class="quote">
-          <p>Jede Quest, die du lebst, ist ein Riss in der Sph&auml;re. Jede echte Begegnung ein leuchtendes Feld. Jedes geheilte Trauma schw&auml;cht die Wand. Du l&ouml;st sie aktiv auf &mdash; durch dein Sein.</p>
+          <p>Jede Quest, die du lebst, erzeugt ein leuchtendes Feld. Jede echte Begegnung st&auml;rkt es. Jedes geheilte Trauma l&auml;sst mehr Licht durch.</p>
         </div>
       </div>
     </div>
@@ -892,7 +885,7 @@
     <div class="section-bg">
       <div class="hero-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(201, 168, 76, 0.5)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">Hier und Jetzt</div>
       <h2 class="section-title">Heldenreise</h2>
@@ -922,7 +915,7 @@
     <div class="section-bg">
       <div class="chain-pattern"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(138, 138, 154, 0.4)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">Die letzten 200 Jahre</div>
       <h2 class="section-title">Das System</h2>
@@ -943,7 +936,7 @@
     <div class="section-bg">
       <div class="fire-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(160, 82, 61, 0.4)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">400 &ndash; 1700 n. Chr.</div>
       <h2 class="section-title">Die große Trennung</h2>
@@ -965,7 +958,7 @@
     <div class="section-bg">
       <div class="forest-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(106, 154, 90, 0.4)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">ca. 3000 v. Chr. &ndash; 400 n. Chr.</div>
       <h2 class="section-title">Kelten, Germanen &amp; Slawen</h2>
@@ -986,7 +979,7 @@
     <div class="section-bg">
       <div class="stone-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(154, 138, 122, 0.4)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">ca. 7000 &ndash; 3000 v. Chr.</div>
       <h2 class="section-title">Alteuropa</h2>
@@ -1006,20 +999,18 @@
     <div class="section-bg">
       <div class="prison-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(192, 57, 43, 0.4)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">ca. 3000 &ndash; 5000 v. Chr.</div>
       <h2 class="section-title">Die Pflanzung der Zeit</h2>
       <div class="divider" style="--accent: #c0392b"></div>
       <div class="section-text">
-        <p>Vor der Zeit gab es keinen Raum und keine Zeit. Alles interagierte gleichzeitig &mdash; frei, offen, verbunden. Die Erde war Teil eines kosmischen Netzwerks. Und wer in der Einheit von Seele, Geist und Bewusstsein lebte, konnte alles tun. Dann wurde etwas gepflanzt.</p>
-        <p>Pyramiden. Monumente. Ankerpunkte. Strukturen von einer Pr&auml;zision, die wir bis heute nicht nachbauen k&ouml;nnen. Nicht alle Wesen, die zur Erde kamen, kamen mit guten Absichten. Und manche brachten Werkzeuge mit &mdash; nicht um zu heilen, sondern um zu takten.</p>
-        <p>Leuchtende Punkte, die sich miteinander verbanden. Eine Sph&auml;re, die sich um die Erde legte &mdash; unsichtbar, aber sp&uuml;rbar. Die lineare Zeit als Gefängnis. Ein Taktgeber, der die Menschheit organisierbar machte. Kontrollierbar. Nutzbar.</p>
-        <p>Das Looking Glass &mdash; ein Artefakt, &auml;lter als Sumer, &auml;lter als alles, was wir Geschichte nennen &mdash; erm&ouml;glichte es den Herrschenden, in die Ereignisse innerhalb dieses Gef&auml;ngnisses hineinzuschauen. In die Illusion. In die Zukunft, die keine echte Zukunft war &mdash; nur eine Projektion innerhalb der Sph&auml;re.</p>
+        <p>Es gab einen Zustand davor. Einen Zustand, in dem alles frei floss &mdash; offen, verbunden, lebendig. Seele, Geist und Bewusstsein waren eins. Die Erde war eingebettet in ein kosmisches Netz aus Verbindungen.</p>
+        <p>Dann wurde etwas gepflanzt. Pyramiden. Monumente. Strukturen von einer Pr&auml;zision, die wir bis heute nicht nachbauen k&ouml;nnen. Nicht alle Wesen, die zur Erde kamen, kamen mit guten Absichten. Manche brachten Werkzeuge mit &mdash; nicht um zu heilen, sondern um zu takten.</p>
+        <p>Eine Sph&auml;re legte sich um die Erde &mdash; unsichtbar, aber sp&uuml;rbar. Ein Schleier, der die Verbindung d&auml;mpfte. Der die Menschheit von ihrem nat&uuml;rlichen Zustand trennte. Organisierbar machte. Kontrollierbar.</p>
         <div class="quote">
-          <p>Nach dem 10. Oktober 2030 zeigt das Looking Glass nichts mehr. Keine Zeitlinie. Keine Zukunft. Stille. &mdash; Die Sph&auml;re l&ouml;st sich auf.</p>
+          <p>Was gepflanzt wurde, kann auch wieder gel&ouml;st werden. Und genau das geschieht &mdash; jetzt.</p>
         </div>
-        <p>Das Ende der Zeit ist kein Untergang. Es ist ein Erwachen. Zur&uuml;ck zum nat&uuml;rlichen Zustand. Dorthin, wo alles begann &mdash; bevor jemand versuchte, es einzusperren.</p>
       </div>
     </div>
   </section>
@@ -1029,19 +1020,18 @@
     <div class="section-bg">
       <div class="sacred-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(232, 160, 32, 0.4)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">30.000 &ndash; 40.000 Jahre</div>
       <h2 class="section-title">Die Vedische Kultur</h2>
       <div class="divider" style="--accent: #e8a020"></div>
       <div class="section-text">
-        <p>Das &auml;lteste lebendige Wissenssystem der Menschheit. Eine Kultur, die weit vor allem existierte, was wir heute Geschichte nennen &mdash; und die ohne kriegerische Aspekte lebte. Sie kannten noch den Zustand vor der Zeit: Seele, Geist und Bewusstsein als Einheit.</p>
-        <p>Die Veden beschreiben eine Welt, in der Bewusstsein der Grundstoff von allem ist. Nicht Materie. Nicht Energie. Bewusstsein. Alles schwingt, alles ist Frequenz, alles ist verbunden. Planeten waren &uuml;ber Tore verkn&uuml;pft. Bewusstsein floss frei zwischen den Dimensionen.</p>
+        <p>Das &auml;lteste lebendige Wissenssystem der Menschheit. Eine Kultur, die weit vor allem existierte, was wir heute Geschichte nennen &mdash; und die ohne kriegerische Aspekte lebte.</p>
+        <p>Die Veden beschreiben eine Welt, in der Bewusstsein der Grundstoff von allem ist. Nicht Materie. Nicht Energie. Bewusstsein. Alles schwingt, alles ist Frequenz, alles ist verbunden.</p>
         <p>Nikola Tesla studierte die Veden &mdash; und fand darin Prinzipien, die ihn zur Nullpunktenergie, zur freien Energie f&uuml;hrten. Viktor Schauberger las die Natur wie die Veden es lehren &mdash; und verstand, was Wasser wirklich ist. Wilhelm Reich entdeckte die Orgon-Energie &mdash; die Lebenskraft, die alles durchdringt.</p>
         <div class="quote">
-          <p>Es gibt keinen Raum und keine Zeit. Alles interagiert und ist miteinander verbunden. &mdash; Bernd</p>
+          <p>Die Kelten, die Germanen, die Inder &mdash; &Auml;ste desselben Baumes. Gen&auml;hrt von derselben Wurzel.</p>
         </div>
-        <p>Die Kelten, die Germanen, die Inder &mdash; &Auml;ste desselben Baumes. Gen&auml;hrt von derselben Wurzel.</p>
       </div>
     </div>
   </section>
@@ -1051,7 +1041,7 @@
     <div class="section-bg">
       <div class="mystery-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(154, 122, 176, 0.4)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">90.000 &ndash; 120.000+ Jahre</div>
       <h2 class="section-title">Alte Hochkulturen</h2>
@@ -1072,7 +1062,7 @@
     <div class="section-bg">
       <div class="cosmos-glow"></div>
     </div>
-    <div class="energy-flow" style="--flow-color: rgba(106, 138, 255, 0.4)"></div>
+    <div class="energy-flow"></div>
     <div class="section-content">
       <div class="section-label">Ewig</div>
       <h2 class="section-title">Das Alleins</h2>
@@ -1121,6 +1111,50 @@
       }
       starsContainer.appendChild(star);
     }
+
+    // Generate energy flow stripes for each section
+    const sectionColors = {
+      'goldenes-sein': { color: 'rgba(255, 215, 0, 0.5)', prev: 'transparent', next: 'rgba(243, 156, 18, 0.3)' },
+      'aufloesung': { color: 'rgba(243, 156, 18, 0.5)', prev: 'rgba(255, 215, 0, 0.3)', next: 'rgba(201, 168, 76, 0.3)' },
+      'heldenreise': { color: 'rgba(201, 168, 76, 0.5)', prev: 'rgba(243, 156, 18, 0.3)', next: 'rgba(138, 138, 154, 0.3)' },
+      'system': { color: 'rgba(138, 138, 154, 0.4)', prev: 'rgba(201, 168, 76, 0.3)', next: 'rgba(160, 82, 61, 0.3)' },
+      'christianisierung': { color: 'rgba(160, 82, 61, 0.4)', prev: 'rgba(138, 138, 154, 0.3)', next: 'rgba(106, 154, 90, 0.3)' },
+      'kelten': { color: 'rgba(106, 154, 90, 0.4)', prev: 'rgba(160, 82, 61, 0.3)', next: 'rgba(154, 138, 122, 0.3)' },
+      'alteuropa': { color: 'rgba(154, 138, 122, 0.4)', prev: 'rgba(106, 154, 90, 0.3)', next: 'rgba(232, 160, 32, 0.3)' },
+      'vedisch': { color: 'rgba(232, 160, 32, 0.4)', prev: 'rgba(154, 138, 122, 0.3)', next: 'rgba(192, 57, 43, 0.3)' },
+      'zeitgefaengnis': { color: 'rgba(192, 57, 43, 0.4)', prev: 'rgba(232, 160, 32, 0.3)', next: 'rgba(154, 122, 176, 0.3)' },
+      'hochkulturen': { color: 'rgba(154, 122, 176, 0.4)', prev: 'rgba(192, 57, 43, 0.3)', next: 'rgba(106, 138, 255, 0.3)' },
+      'kosmisch': { color: 'rgba(106, 138, 255, 0.4)', prev: 'rgba(154, 122, 176, 0.3)', next: 'transparent' }
+    };
+
+    document.querySelectorAll('.energy-flow').forEach(flow => {
+      const sectionId = flow.closest('.section').id;
+      const colors = sectionColors[sectionId];
+      if (!colors) return;
+
+      const stripeCount = 6 + Math.floor(Math.random() * 4);
+      const positions = [];
+      // Left side stripes (6%-16%)
+      for (let i = 0; i < Math.ceil(stripeCount / 2); i++) {
+        positions.push(6 + Math.random() * 10);
+      }
+      // Right side stripes (84%-94%)
+      for (let i = 0; i < Math.floor(stripeCount / 2); i++) {
+        positions.push(84 + Math.random() * 10);
+      }
+
+      positions.forEach(pos => {
+        const stripe = document.createElement('div');
+        stripe.className = 'stripe';
+        stripe.style.left = pos + '%';
+        stripe.style.setProperty('--flow-color', colors.color);
+        stripe.style.setProperty('--flow-color-prev', colors.prev);
+        stripe.style.setProperty('--flow-color-next', colors.next);
+        stripe.style.setProperty('--stripe-speed', (6 + Math.random() * 8) + 's');
+        stripe.style.setProperty('--stripe-delay', (Math.random() * 6) + 's');
+        flow.appendChild(stripe);
+      });
+    });
 
     // Generate particles for kosmisch section
     const kosmischBg = document.querySelector('#kosmisch .section-bg');
