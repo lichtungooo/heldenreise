@@ -452,6 +452,67 @@
       50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
     }
 
+    /* --- ZEITGEFÄNGNIS --- */
+    #zeitgefaengnis {
+      background: linear-gradient(180deg, #0a0a0f 0%, #1a0a0a 30%, #200808 50%, #1a0a0a 70%, #0a0a0f 100%);
+    }
+
+    #zeitgefaengnis .section-title {
+      color: #c0392b;
+    }
+
+    #zeitgefaengnis .prison-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 1px solid rgba(192, 57, 43, 0.1);
+      box-shadow: 0 0 60px rgba(192, 57, 43, 0.05) inset, 0 0 120px rgba(192, 57, 43, 0.03);
+      animation: prisonPulse 8s ease-in-out infinite;
+    }
+
+    #zeitgefaengnis .prison-glow::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      right: 10%;
+      bottom: 10%;
+      border-radius: 50%;
+      border: 1px solid rgba(192, 57, 43, 0.06);
+    }
+
+    @keyframes prisonPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+
+    /* --- ZEITLOSER ZUSTAND --- */
+    #zeitlos {
+      background: radial-gradient(ellipse at 50% 50%, #0a140a 0%, #0a0f0a 40%, #0a0a0f 100%);
+    }
+
+    #zeitlos .section-title {
+      background: linear-gradient(135deg, #2ecc71, #a8ffb0, #2ecc71);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #zeitlos .freedom-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(46, 204, 113, 0.04) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 60%, rgba(46, 204, 113, 0.04) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 50%, rgba(46, 204, 113, 0.02) 0%, transparent 70%);
+    }
+
     /* --- ALTE HOCHKULTUREN --- */
     #hochkulturen {
       background: linear-gradient(180deg, #0a0a0f 0%, #0f0a14 40%, #0a0a0f 100%);
@@ -680,11 +741,17 @@
     <div class="nav-dot" data-target="vedisch" style="--dot-color: #e8a020">
       <span class="tooltip">Vedische Kultur</span>
     </div>
+    <div class="nav-dot" data-target="zeitgefaengnis" style="--dot-color: #c0392b">
+      <span class="tooltip">Die Pflanzung der Zeit</span>
+    </div>
     <div class="nav-dot" data-target="hochkulturen" style="--dot-color: #9a7ab0">
       <span class="tooltip">Alte Hochkulturen</span>
     </div>
+    <div class="nav-dot" data-target="zeitlos" style="--dot-color: #2ecc71">
+      <span class="tooltip">Der zeitlose Zustand</span>
+    </div>
     <div class="nav-dot" data-target="kosmisch" style="--dot-color: #6a8aff">
-      <span class="tooltip">Kosmische Verbindung</span>
+      <span class="tooltip">Das Alleins</span>
     </div>
   </nav>
 
@@ -706,12 +773,12 @@
       <h2 class="section-title">Das Goldene Zeitalter</h2>
       <div class="divider" style="--accent: #ffd700"></div>
       <div class="section-text">
-        <p>Stell dir eine Welt vor, in der Mensch, Erde und Kosmos wieder im Einklang schwingen. Technologie, die aus Bewusstsein entsteht, nicht aus Ausbeutung. Gemeinschaften, die sich selbst nähren. Verbindung zu allem, was ist.</p>
-        <p>Neue Technologien, die Tesla schon erahnte. Energie, die frei fließt. Wissen, das geteilt wird. Grenzen, die sich auflösen &mdash; zwischen Nationen, zwischen Dimensionen, zwischen uns.</p>
+        <p>Die Sph&auml;re l&ouml;st sich auf. Die Tore &ouml;ffnen sich. Die Verbindung zu allem, was ist, wird wiederhergestellt &mdash; zwischen Menschen, zwischen Planeten, zwischen Dimensionen.</p>
+        <p>Neue Technologien, die Tesla schon erahnte. Energie, die frei flie&szlig;t. Bewusstsein, das nicht mehr getaktet wird. Gemeinschaften, die sich selbst n&auml;hren. Zeit, die aufh&ouml;rt, ein Gef&auml;ngnis zu sein &mdash; und wieder zum ewigen Jetzt wird.</p>
+        <p>Die Menschheit bekämpft das System nicht. Sie h&ouml;rt einfach auf, sich daran zu beteiligen. Und in dieser Stille &mdash; in dieser Weigerung, die Illusion weiter zu n&auml;hren &mdash; zerbricht die Sph&auml;re.</p>
         <div class="quote">
-          <p>Die Verbindung zu allem war nie weg &mdash; nur vergessen.</p>
+          <p>Die Verbindung zu allem war nie weg &mdash; nur &uuml;berlagert. Und die &Uuml;berlagerung endet.</p>
         </div>
-        <p>Das ist kein Traum. Das ist Erinnerung. An das, was wir einmal waren &mdash; und wieder werden.</p>
       </div>
     </div>
   </section>
@@ -825,6 +892,28 @@
     </div>
   </section>
 
+  <!-- ZEITGEFÄNGNIS -->
+  <section class="section" id="zeitgefaengnis">
+    <div class="section-bg">
+      <div class="prison-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">ca. 3000 &ndash; 5000 v. Chr.</div>
+      <h2 class="section-title">Die Pflanzung der Zeit</h2>
+      <div class="divider" style="--accent: #c0392b"></div>
+      <div class="section-text">
+        <p>Es gab eine Zeit vor der Zeit. Einen Zustand, in dem alles gleichzeitig existierte &mdash; frei, verbunden, lebendig. Dann wurde etwas gepflanzt.</p>
+        <p>Pyramiden. Monumente. Ankerpunkte. Strukturen von einer Pr&auml;zision, die wir bis heute nicht nachbauen k&ouml;nnen. Nicht alle Wesen, die zur Erde kamen, kamen mit guten Absichten. Und manche brachten Werkzeuge mit &mdash; nicht um zu heilen, sondern um zu takten.</p>
+        <p>Leuchtende Punkte, die sich miteinander verbanden. Eine Sph&auml;re, die sich um die Erde legte &mdash; unsichtbar, aber sp&uuml;rbar. Die lineare Zeit als Gefängnis. Ein Taktgeber, der die Menschheit organisierbar machte. Kontrollierbar. Nutzbar.</p>
+        <p>Das Looking Glass &mdash; ein Artefakt, &auml;lter als Sumer, &auml;lter als alles, was wir Geschichte nennen &mdash; erm&ouml;glichte es den Herrschenden, in die Ereignisse innerhalb dieses Gef&auml;ngnisses hineinzuschauen. In die Illusion. In die Zukunft, die keine echte Zukunft war &mdash; nur eine Projektion innerhalb der Sph&auml;re.</p>
+        <div class="quote">
+          <p>Nach dem 10. Oktober 2030 zeigt das Looking Glass nichts mehr. Keine Zeitlinie. Keine Zukunft. Stille. &mdash; Die Sph&auml;re l&ouml;st sich auf.</p>
+        </div>
+        <p>Das Ende der Zeit ist kein Untergang. Es ist ein Erwachen. Zur&uuml;ck zum nat&uuml;rlichen Zustand. Dorthin, wo alles begann &mdash; bevor jemand versuchte, es einzusperren.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- VEDISCH -->
   <section class="section" id="vedisch">
     <div class="section-bg">
@@ -865,23 +954,44 @@
     </div>
   </section>
 
-  <!-- KOSMISCHE VERBINDUNG -->
+  <!-- DER ZEITLOSE ZUSTAND -->
+  <section class="section" id="zeitlos">
+    <div class="section-bg">
+      <div class="freedom-glow"></div>
+    </div>
+    <div class="section-content">
+      <div class="section-label">Vor der Zeit</div>
+      <h2 class="section-title">Der zeitlose Zustand</h2>
+      <div class="divider" style="--accent: #2ecc71"></div>
+      <div class="section-text">
+        <p>Bevor die Zeit gepflanzt wurde, gab es einen Zustand, den wir kaum in Worte fassen k&ouml;nnen. Keinen Raum. Keine Zeit. Alles interagierte gleichzeitig &mdash; frei, offen, verbunden.</p>
+        <p>Planeten waren &uuml;ber Tore miteinander verkn&uuml;pft. Bewusstsein floss zwischen den Dimensionen. Die Erde war Teil eines kosmischen Netzwerks aus unz&auml;hligen Zivilisationen und Lebensformen. Manche kamen und gingen. Manche blieben. Alle waren verbunden.</p>
+        <p>In diesem Zustand waren Seele, Geist und Bewusstsein eins. Und wer in dieser Einheit lebt, kann alles tun &mdash; heilen, manifestieren, reisen. Das war kein Wunder. Das war normal.</p>
+        <div class="quote">
+          <p>Es gibt keinen Raum und keine Zeit. Alles interagiert und ist miteinander verbunden. &mdash; Bernd</p>
+        </div>
+        <p>Dieser Zustand war nie weg. Er wurde nur &uuml;berlagert &mdash; von einer Sph&auml;re, einer Illusion, einem Taktgeber. Und diese &Uuml;berlagerung beginnt sich aufzul&ouml;sen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAS ALLEINS -->
   <section class="section" id="kosmisch">
     <div class="section-bg">
       <div class="cosmos-glow"></div>
     </div>
     <div class="section-content">
-      <div class="section-label">Zeitlos</div>
-      <h2 class="section-title">Die kosmische Verbindung</h2>
+      <div class="section-label">Ewig</div>
+      <h2 class="section-title">Das Alleins</h2>
       <div class="divider" style="--accent: #6a8aff"></div>
       <div class="section-text">
-        <p>Die Erde ist kein isolierter Fels im All. Sie war immer Teil von etwas Größerem &mdash; eines Netzwerks, das sich über Dimensionen erstreckt.</p>
-        <p>Verbindungen zwischen Planeten. Tore zwischen den Welten. Ein kollektives Bewusstsein, das nicht an der Atmosphäre endet, sondern das gesamte Universum durchdringt.</p>
-        <p>Was, wenn diese Verbindungen nie gekappt wurden? Was, wenn sie nur vergessen wurden &mdash; und darauf warten, dass wir uns erinnern?</p>
+        <p>Unter allem, hinter allem, in allem: Das Alleins. Die Verbindung von allem, was ist, was war, was sein wird.</p>
+        <p>Wenn Seele, Geist und Bewusstsein eins werden &mdash; dann kannst du alles tun. Das ist keine Theorie. Das ist eine Erfahrung, die Menschen seit Jahrtausenden machen. Heiler, die &uuml;ber die geistige Welt heilen. Seher, die &uuml;ber Dimensionen blicken. Menschen, die das Kosmische Gesetz kennen: Niemand hat das Recht, bei einem anderen einzugreifen.</p>
+        <p>Die Tore zwischen den Welten waren einmal offen. Sie werden wieder &ouml;ffnen. Nicht irgendwann &mdash; jetzt. Mit jedem Menschen, der in seine Kraft kommt. Mit jeder echten Begegnung, die ein leuchtendes Feld erzeugt. Mit jedem Trauma, das geheilt wird.</p>
         <div class="quote">
-          <p>Das Alleins. Die Verbindung von allem, was ist, was war, was sein wird. Nicht irgendwo da draußen &mdash; in dir.</p>
+          <p>Du musst nirgendwohin reisen. Das Alleins ist nicht da drau&szlig;en. Es ist in dir. Es war immer in dir.</p>
         </div>
-        <p>Und hier schließt sich der Kreis. Die kosmische Verbindung und das Goldene Zeitalter sind dasselbe &mdash; nur von verschiedenen Seiten betrachtet. Die Reise nach innen ist die Reise nach außen. Die Reise in die Vergangenheit ist die Reise in die Zukunft.</p>
+        <p>Und hier schlie&szlig;t sich der Kreis. Das Alleins und das Goldene Zeitalter sind dasselbe &mdash; nur von verschiedenen Seiten betrachtet. Die Reise nach innen ist die Reise nach au&szlig;en. Die Heldenreise endet dort, wo sie begann &mdash; bei dir.</p>
       </div>
     </div>
   </section>
